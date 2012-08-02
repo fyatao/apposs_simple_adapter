@@ -1,0 +1,13 @@
+= AppossSimpleAdapter
+
+apposs 平台使用 adapter 机制对运维系统的外部资源进行适应，本项目提供一个最基本的 adapter 实现
+
+== 安装
+* 在 Gemfile 中添加当前gem包
+* simple adapter 使用 google oauth 服务进行身份确认，用户需要预先申请 google 的 oauth2 认证，并根据申请资料编写 config/initializers/omniauth.rb 文件
+* 设置 adapter ，修改 RAILS_ROOT/config/application.rb 文件，设定如下内容
+config.adapter = AppossTbAdapter
+* 设置 oauth 的callback 路径，添加controller，并修改 route.rb 内容为
+match '/auth/:provider/callback' => 'home#callback'
+
+This project rocks and uses MIT-LICENSE.
